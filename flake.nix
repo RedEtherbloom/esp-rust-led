@@ -27,8 +27,10 @@
             esp-generate
             espflash
             probe-rs-tools
-            # TODO: Initialize from rust-toolchain.toml instead to make project indepent of nix
-            inputs'.fenix.packages.targets."riscv32imac-unknown-none-elf".stable.completeToolchain
+            (inputs'.fenix.packages.fromToolchainFile {
+              file = ./rust-toolchain.toml;
+              sha256 = "sha256-vra6TkHITpwRyA5oBKAHSX0Mi6CBDNQD+ryPSpxFsfg=";
+            })
           ];
         };
       };
